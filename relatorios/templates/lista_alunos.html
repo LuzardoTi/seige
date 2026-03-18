@@ -1,0 +1,21 @@
+<h1>Lista de Alunos</h1>
+
+<table border="1">
+    <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Telefone</th>
+        <th>Email</th>
+        <th>Endereço</th>
+    </tr>
+
+    {% for aluno in alunos %}
+    <tr>
+        <td>{{ aluno.nome }}</td>
+        <td>{{ aluno.cpf }}</td>
+        <td>{{ aluno.telefone }}</td>
+        <td>{{ aluno.email }}</td>
+        <td>{{ aluno.endereco }}</td>
+    </tr>
+    {% endfor %}
+</table>
