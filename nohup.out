@@ -1,0 +1,29 @@
+Watching for file changes with StatReloader
+[24/Mar/2026 14:39:57] "GET /alunos/ HTTP/1.1" 200 3635
+[24/Mar/2026 14:40:04] "GET /alunos/ HTTP/1.1" 200 3635
+[24/Mar/2026 18:46:30,366] - Broken pipe from ('66.132.195.99', 51408)
+Not Found: /
+[24/Mar/2026 18:46:33] "GET / HTTP/1.1" 404 2484
+[24/Mar/2026 18:46:33,758] - Broken pipe from ('66.132.195.99', 51440)
+[24/Mar/2026 18:46:36] code 400, message Bad request syntax ("\\x16\\x03\\x01\\x00\xee\\x01\\x00\\x00\xea\\x03\\x03\xfbd\xdd\xba\xf0'")
+[24/Mar/2026 18:46:36] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[24/Mar/2026 18:46:37] "GET / HTTP/1.1" 404 2484
+[24/Mar/2026 18:46:37] code 505, message Invalid HTTP version (2.0)
+[24/Mar/2026 18:46:37] "PRI * HTTP/2.0" 505 -
+[24/Mar/2026 18:46:40] code 400, message Bad request version ('\xc0\\x14\xc0')
+[24/Mar/2026 18:46:40] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /login
+[24/Mar/2026 18:46:41] "GET /login HTTP/1.1" 404 2517
+[25/Mar/2026 13:54:55] "GET /alunos/ HTTP/1.1" 200 3635
+[25/Mar/2026 13:55:14] "GET /alunos/ HTTP/1.1" 200 3635
+Performing system checks...
+
+System check identified no issues (0 silenced).
+March 24, 2026 - 14:39:51
+Django version 6.0.3, using settings 'seige.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/6.0/howto/deployment/

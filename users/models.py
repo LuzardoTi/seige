@@ -128,3 +128,23 @@ class Matricula(models.Model):
 
     def __str__(self):
         return f"{self.aluno} - {self.curso}"
+
+class Historico(models.Model):
+
+    aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE)
+    disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE)
+
+    semestre = models.CharField(max_length=10)
+
+    nota = models.DecimalField(max_digits=4, decimal_places=2)
+
+    STATUS = [
+        ('aprovado', 'Aprovado'),
+        ('reprovado', 'Reprovado'),
+        ('cursando', 'Cursando'),
+    ]
+
+    status = models.CharField(max_length=20, choices=STATUS)
+
+    def __str__(self):
+        return f"{self.aluno} - {self.disciplina}"

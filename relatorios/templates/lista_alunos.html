@@ -1,21 +1,144 @@
-<h1>Lista de Alunos</h1>
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SEIGE - Lista de Alunos</title>
 
-<table border="1">
-    <tr>
-        <th>Nome</th>
-        <th>CPF</th>
-        <th>Telefone</th>
-        <th>Email</th>
-        <th>Endereço</th>
-    </tr>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #f4f6f9;
+        }
 
-    {% for aluno in alunos %}
-    <tr>
-        <td>{{ aluno.nome }}</td>
-        <td>{{ aluno.cpf }}</td>
-        <td>{{ aluno.telefone }}</td>
-        <td>{{ aluno.email }}</td>
-        <td>{{ aluno.endereco }}</td>
-    </tr>
-    {% endfor %}
-</table>
+        .topo {
+            background: #007bff;
+            color: white;
+            padding: 15px;
+            font-size: 20px;
+        }
+
+        .container {
+            padding: 30px;
+        }
+
+        .filtros {
+            margin-bottom: 20px;
+        }
+
+        input, select {
+            padding: 8px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 8px 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-imprimir {
+            background: #28a745;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #343a40;
+            color: white;
+        }
+
+        tr:hover {
+            background: #f1f1f1;
+        }
+
+        .info {
+            margin-bottom: 15px;
+        }
+    </style>
+
+    <script>
+        function imprimir() {
+            window.print();
+        }
+    </script>
+
+</head>
+<body>
+
+<div class="topo" style="display:flex; align-items:center;">
+    <img src="{% static 'img/logo.png' %}" height="40" style="margin-right:10px;">
+    <span>SEIGE - Sistema Educacional</span>
+</div>
+
+<div class="container">
+
+    <h2>📋 Lista de Alunos</h2>
+
+    <div class="info">
+        Total de alunos: <strong>{{ alunos|length }}</strong>
+    </div>
+
+    <form method="get" class="filtros">
+        <input type="text" name="busca" placeholder="Buscar por nome">
+
+        <select name="curso">
+            <option value="">Todos os cursos</option>
+            {% for curso in cursos %}
+                <option value="{{ curso.id }}">{{ curso.nome }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Filtrar</button>
+        <button type="button" class="btn-imprimir" onclick="imprimir()">Imprimir</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Curso</th>
+	    <th>Histórico</th>
+        </tr>
+
+        {% for aluno in alunos %}
+        <tr>
+            <td>{{ aluno.nome }}</td>
+            <td>{{ aluno.cpf }}</td>
+            <td>{{ aluno.telefone }}</td>
+            <td>{{ aluno.email }}</td>
+            <td>
+    {% if aluno.matricula_set.all %}
+        {{ aluno.matricula_set.all.0.curso.nome }}
+    {% else %}
+        Sem matrícula
+    {% endif %}
+</td>
+<td>
+    <a href="/historico/{{ aluno.id }}/">Ver histórico</a>
+</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6">Nenhum aluno encontrado</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+</body>
+</html>

@@ -6,3 +6,6 @@ admin.site.register(Curso)
 admin.site.register(Polo)
 admin.site.register(Disciplina)
 admin.site.register(Matricula)
+
+from .models import Historico
+admin.site.register(Historico)

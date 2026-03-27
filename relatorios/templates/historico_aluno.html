@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Histórico Acadêmico</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 30px;
+            background: #f4f6f9;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>📚 Histórico Acadêmico</h2>
+
+<table>
+    <tr>
+        <th>Disciplina</th>
+        <th>Semestre</th>
+        <th>Nota</th>
+        <th>Status</th>
+    </tr>
+
+    {% for item in historico %}
+    <tr>
+        <td>{{ item.disciplina.nome }}</td>
+        <td>{{ item.semestre }}</td>
+        <td>{{ item.nota }}</td>
+        <td>{{ item.status }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="4">Nenhum registro encontrado</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
